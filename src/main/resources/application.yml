@@ -1,0 +1,33 @@
+spring:
+  application: 
+    name: user-app
+  datasource:
+    url: jdbc:mysql://localhost:3306/ad_user
+    username: root
+    password: dat123@@
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+  security:
+    oauth2:
+      client:
+        registration:
+          message-client-oidc:
+            provider: keycloak
+            client-id: message-client
+            client-secret: gENIt9021tQazZKyNDUXhTdvUoIosrkB
+            redirect-uri: http://localhost:8080/login/oauth2/code/message-client-oidc
+            scope: openid
+            authorization-grant-type: authorization_code
+          message-client-authorized:
+            provider: keycloak
+            client-id: message-client
+            client-secret: gENIt9021tQazZKyNDUXhTdvUoIosrkB
+            redirect-uri: http://localhost:8080/authorized
+            scope: openid
+            authorization-grant-type: authorization_code
+        provider:
+          keycloak:
+            issuer-uri: http://auth-server:8300/realms/datnt8
